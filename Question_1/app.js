@@ -1,15 +1,14 @@
-
 const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = 3000;
 
 const regData = {
-  cname: 'Affordmed',
-  owner: 'Sai kiran',
-  roll: 'S20200010176',
-  email: 'saikiran.r20@iiits.in',
-  code: 'jYjgQH'
+  companyName: 'Affordmed',
+  ownerName: 'Sai kiran',
+  rollNo: 'S20200010176',
+  ownerEmail: 'saikiran.r20@iiits.in',
+  accessCode: 'jYjgQH'
 };
 
 let token = '';
@@ -18,12 +17,12 @@ axios.post('http://20.244.56.144/train/register', regData)
   .then(response => {
     creds = response.data;
     const authData = {
-      name: regData.cname,
+      companyName: regData.companyName,
       clientID: response.data.clientID,
-      owner: regData.owner,
-      email: regData.email,
-      roll: regData.roll,
-      secret: response.data.clientSecret
+      ownerName: regData.ownerName,
+      ownerEmail: regData.ownerEmail,
+      rollNo: regData.rollNo,
+      clientSecret: response.data.clientSecret
     };
     return axios.post('http://20.244.56.144/train/auth', authData);
   })
