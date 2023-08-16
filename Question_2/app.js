@@ -36,7 +36,6 @@ app.get("/numbers", async (req, res) => {
   unique_integers.forEach((num) => {
     ret_arr.push(num);
   });
-  ret_arr.sort((a, b) => a - b);
   res.json({
     numbers: ret_arr,
   });
